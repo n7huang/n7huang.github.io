@@ -1,7 +1,26 @@
 export const colour = {
-  accent: '#b5dba2',
+  accent: '#B4DBA2',
+  accentDark: '#5E9942',
+  secondary: '#7BA69A',
+  secondaryDark: '#327462',
+  tertiary: '#FDD3BB',
+  tertiaryDark: '#B1714C',
+  complement: '#ECAEBA',
+  complementDark: '#A54759',
+  backgroundLight: '#e9ecf2',
+  contentLight: '#cad1e0',
+  contentDark: '#405270',
+  linkedinBlue: '#0077b5',
+  wishBlue: '#59b6e7',
+  uwYellow: '#ffd54f',
+  uwYellowDark: '#e4b429',
+  chefGreen: '#2c6972',
+  veevaOrange: '#ec9c40',
+  veevaGrey: '#eff0f0',
+  ultiGreen: '#61973e',
   header: 'white',
-  content: '#e1e6f0',
+  white: 'white',
+  black: 'black',
 };
 
 export const screenSize = {
@@ -9,4 +28,5 @@ export const screenSize = {
   mobileLandscape: '@media only screen and (min-width: 480px) and (max-width: 767px)',
   tablet: '@media only screen and (min-width: 768px) and (max-width: 991px)',
   desktop: '@media only screen and (min-width: 992px)',
+  wide: '@media only screen and (min-width: 1170px)',
 }

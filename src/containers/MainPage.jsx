@@ -1,14 +1,17 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import Blurb from '../components/Blurb';
 import Experience from '../components/Experience';
 
 const MainPage = () => {
   const styles = useStyle();
+  const experienceRef = useRef(null);
   return (
     <div className={css(styles.mainRoot)}>
-      <Blurb/>
-      <Experience/>
+      <Blurb
+        experienceRef={experienceRef}/>
+      <Experience
+        experienceRef={experienceRef}/>
     </div>
   );
 }
