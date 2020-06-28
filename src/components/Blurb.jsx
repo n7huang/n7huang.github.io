@@ -12,7 +12,7 @@ const Blurb = (props) => {
   const toSkills = () => {};
 
   return (
-    <div className={css(styles.root)}>
+    <div className={css(styles.container)}>
       <div className={css(styles.background)}>
         <div className={css(styles.tint)}>
           <div className={css(styles.introContainer)}>
@@ -39,7 +39,7 @@ const Blurb = (props) => {
 const useStyle = () => {
   return useMemo(() => {
     return StyleSheet.create({
-      root: {
+      container: {
         transition: 'ease all .5s',
       },
       background: {
@@ -48,23 +48,14 @@ const useStyle = () => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: '60%'
-        // [screenSize.mobile]: {
-        //   backgroundPosition: '60%',
-        // },
-        // [screenSize.mobileLandscape]: {
-        //   backgroundPosition: '60%',
-        // },
-        // [screenSize.tablet]: {
-        //   backgroundPosition: '60%',
-        // },
-        // [screenSize.desktop]: {
-        //   backgroundPosition: 'center'
-        // },
       },
       tint: {
         height: '100%',
         width: '100%',
-        backgroundColor: 'rgba(24, 37, 64, 0.6)',
+        backgroundImage:
+          `linear-gradient(
+            ${colour.backgroundDarkTransparent},
+            ${colour.backgroundDark})`,
         margin: 0,
       },
       accent: {

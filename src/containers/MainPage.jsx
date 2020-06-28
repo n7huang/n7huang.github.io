@@ -7,7 +7,7 @@ const MainPage = () => {
   const styles = useStyle();
   const experienceRef = useRef(null);
   return (
-    <div className={css(styles.mainRoot)}>
+    <div className={css(styles.container)}>
       <Blurb
         experienceRef={experienceRef}/>
       <Experience
@@ -19,7 +19,7 @@ const MainPage = () => {
 const useStyle = () => {
   return useMemo(() => {
     return StyleSheet.create({
-      mainRoot: {
+      container: {
         display: 'flex',
         flexDirection: 'column',
       },

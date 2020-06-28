@@ -26,6 +26,7 @@ const Experience = (props) => {
         date: 'Aug 2020 (incoming)',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.linkedinBlue}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.linkedinBlue}` },
         icon: <LinkedIn />,
       },
@@ -38,6 +39,7 @@ const Experience = (props) => {
         date: 'Sep 2015 - Jun 2020',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.uwYellowDark}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.uwYellow}` },
         icon: <Waterloo />,
       },
@@ -59,6 +61,7 @@ const Experience = (props) => {
         date: 'Sep - Dec 2019',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.wishBlue}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.wishBlue}` },
         icon: <Wish />,
       },
@@ -80,6 +83,7 @@ const Experience = (props) => {
         date: 'Jan - Apr 2019',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.linkedinBlue}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.linkedinBlue}` },
         icon: <LinkedIn />,
       },
@@ -102,6 +106,7 @@ const Experience = (props) => {
         date: 'May - Aug 2018',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.chefGreen}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.chefGreen}` },
         icon: <ChefHero />,
       },
@@ -124,6 +129,7 @@ const Experience = (props) => {
         date: 'Sep - Dec 2017',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.veevaOrange}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.veevaGrey}` },
         icon: <Veeva />,
       },
@@ -145,6 +151,7 @@ const Experience = (props) => {
         date: 'Jan - Apr 2017',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.ultiGreen}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.white}` },
         icon: <Ulti/>,
       },
@@ -166,6 +173,7 @@ const Experience = (props) => {
         date: 'May - Aug 2016',
         className: 'vertical-timeline-element',
         contentStyle: { ...tlStyles.tlContent, borderTop: `3px solid ${colour.black}` },
+        contentArrowStyle: { visibility: 'hidden' },
         iconStyle: { ...tlStyles.tlIcon, background: `${colour.white}` },
         icon: <Ontario />,
       },
@@ -196,7 +204,7 @@ const Experience = (props) => {
   };
 
   return (
-    <div ref={props.experienceRef} className={css(styles.root)}>
+    <div ref={props.experienceRef} className={css(styles.container)}>
       <div className={css(styles.experienceHeader)}>
         <h2 className={css(styles.experienceTitle)}>
           Work Experience & Education
@@ -228,31 +236,31 @@ const Experience = (props) => {
 const useStyle = () => {
   return useMemo(() => {
     return StyleSheet.create({
-      root: {
+      container: {
         height: '100%',
         width: '100%',
-        backgroundColor: colour.backgroundLight,
+        transition: 'ease all .5s',
       },
       experienceHeader: {
         display: 'flex',
         flexDirection: 'column',
         textAlign: 'center',
+        width: '80%',
+        margin: 'auto',
       },
       experienceTitle: {
-        color: colour.secondaryDark,
+        color: colour.secondary,
         marginBottom: 10,
-        fontWeight: 'normal',
+        // fontWeight: 'normal',
         fontSize: 24,
         [screenSize.wide]: {
           fontSize: 32,
         }
       },
       experienceContent: {
-        color: colour.contentDark,
+        color: colour.contentLight,
         fontSize: 12,
-        width: '80%',
         marginTop: 0,
-        margin: 'auto',
       },
       separator: {
         width: '50%',
@@ -264,7 +272,6 @@ const useStyle = () => {
         [screenSize.wide]: {
           width: '95%',
         },
-        marginBottom: 20,
       },
       skills: {
         fontSize: 12,
@@ -306,10 +313,13 @@ const useTimelineStyles = () => {
   return useMemo(() => {
     return {
       tlContent: {
-        color: colour.contentDark,
+        color: colour.contentLight,
+        backgroundColor: 'transparent',
+        paddingTop: 10,
+        boxShadow: 'none',
+        border: 'none',
       },
-      tlIcon: { 
-        // background: 'rgb(255, 213, 79)',
+      tlIcon: {
         color: colour.white,
       },
     }
