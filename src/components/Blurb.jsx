@@ -1,22 +1,24 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
+import { colour, alpha, screenSize } from '../util/util';
 import Background from '../img/bg/background_02.png'
-import { colour } from '../util/util';
 
 const Blurb = (props) => {
   const {
-    experienceRef
+    experienceRef,
+    skillsRef
   } = props;
+
   const styles = useStyle();
-  const scrollTo = (ref) => window.scrollTo(0, ref.current.offsetTop);
-  const toSkills = () => {};
+  const scrollTo = (ref, offset = 0) => window.scrollTo(0, ref.current.offsetTop + offset);
 
   return (
-    <div className={css(styles.container)}>
-      <div className={css(styles.background)}>
-        <div className={css(styles.tint)}>
+    <div className={css(styles.background)}>
+      <div className={css(styles.tint)}>
+        <div className={css(styles.container)}>
           <div className={css(styles.introContainer)}>
-            <h1 className={css(styles.introHeader)}>hi, i'm 
+            <h1 className={css(styles.introTitle)}>hi, i'm 
               <span className={css(styles.accent)}> nicholas</span>.
             </h1>
             <p className={css(styles.introContent)}>
@@ -26,8 +28,8 @@ const Blurb = (props) => {
               I build data-driven APIs and responsive web applications.
               <br/>
               You can check out&nbsp;
-              <a onClick={() => scrollTo(experienceRef)} className={css(styles.link)}>what I've done</a> and&nbsp;
-              <a onClick={toSkills} className={css(styles.link)}>what I can do</a> below. :)
+              <span onClick={() => scrollTo(experienceRef)} className={css(styles.link)}>what I've done</span> and&nbsp;
+              <span onClick={() => scrollTo(skillsRef, -120)} className={css(styles.link)}>what I can do</span> below. :)
             </p>
           </div>
         </div>
@@ -40,7 +42,7 @@ const useStyle = () => {
   return useMemo(() => {
     return StyleSheet.create({
       container: {
-        transition: 'ease all .5s',
+        transition: 'ease all .5s'
       },
       background: {
         backgroundImage: `url(${Background})`,
@@ -54,7 +56,7 @@ const useStyle = () => {
         width: '100%',
         backgroundImage:
           `linear-gradient(
-            ${colour.backgroundDarkTransparent},
+            ${alpha(colour.backgroundBlue)},
             ${colour.backgroundDark})`,
         margin: 0,
       },
@@ -64,19 +66,25 @@ const useStyle = () => {
       introContainer: {
         display: 'flex',
         flexDirection: 'column',
-        width: '40%',
-        margin: '0 8%',
+        width: '30%',
+        margin: '0 15%',
         paddingTop: 255,
       },
-      introHeader: {
+      introTitle: {
         color: colour.header,
-        fontSize: 50,
+        fontSize: 32,
         margin: 0,
+        [screenSize.nonMobile]: {
+          fontSize: 50,
+        }
       },
       introContent: {
         color: colour.contentLight,
-        fontSize: 18,
+        fontSize: 12,
         fontWeight: 'bold',
+        [screenSize.nonMobile]: {
+          fontSize: 18,
+        }
       },
       link: {
         color: colour.complement,
@@ -88,5 +96,16 @@ const useStyle = () => {
     });
   }, []);
 };
+
+Blurb.propTypes = {
+  experienceRef: PropTypes.oneOfType([
+    PropTypes.func, 
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
+  skillsRef: PropTypes.oneOfType([
+    PropTypes.func, 
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
+}
 
 export default Blurb;
