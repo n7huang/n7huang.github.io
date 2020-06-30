@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import { colour, alpha, screenSize } from '../util/util';
+import Button from '@material-ui/core/Button';
 
 const InfoCards = (props) => {
   const styles = useStyle(props);
@@ -30,6 +31,31 @@ const InfoCards = (props) => {
           :
           e.content
         }
+        {e.subcontent &&
+          <p className={css(styles.cardSubcontent)}>{e.subcontent}</p>
+        }
+        {e.links &&
+          <div className={css(styles.links)}>
+            {e.links.sourceCode &&
+              <Button
+                variant={'contained'}
+                className={css(styles.linkBlock)}
+                target={'_blank'}
+                href={e.links.sourceCode}>
+                  View Source Code
+              </Button>
+            }
+            {e.links.website &&
+              <Button
+              variant={'contained'}
+              className={css(styles.linkBlock)}
+              target={'_blank'}
+              href={e.links.website}>
+                Visit Website
+            </Button>
+            }
+          </div>
+        }
       </div>
     ));
 
@@ -45,6 +71,7 @@ const InfoCards = (props) => {
 
 const useStyle = (props) => {
   const {
+    backgroundColor,
     textColor
   } = props;
 
@@ -56,7 +83,7 @@ const useStyle = (props) => {
         padding: '26px 0',
       },
       title: {
-        margin: '0 0 10px 0',
+        margin: '0 0 20px 0',
         color: colour.tertiary,
         fontSize: 26,
         textAlign: 'center',
@@ -74,22 +101,24 @@ const useStyle = (props) => {
         justifyContent: 'center',
       },
       card: {
-        minHeight: 285,
-        backgroundColor: alpha(colour.shadow),
+        backgroundColor: backgroundColor || 'transparent',
+        boxShadow: `0 5px 5px ${alpha(colour.black, 0.2)}`,
         textAlign: 'center',
-        padding: '20px 0',
+        padding: '20px 8px',
         borderRadius: 4,
-        margin: '0.5%',
-        marginBottom: '1%',
+        margin: '1%',
+        marginBottom: '2%',
         flexGrow: 1,
         width: '100%',
         [screenSize.mobileLarge]: {
-          width: '48%',
-          maxWidth: '48%',
+          maxWidth: '45%',
+          margin: '0.5%',
+          marginBottom: '1%',
         },
         [screenSize.desktop]: {
-          width: '23%',
-          maxWidth: '23%',
+          maxWidth: '22%',
+          margin: '0.5%',
+          marginBottom: '1%',
         },
       },
       cardIconBox: {
@@ -106,9 +135,36 @@ const useStyle = (props) => {
       },
       cardTitle: {
         fontWeight: 'normal',
+        marginBottom: 8,
       },
       cardContent: {
-        color: textColor || 'black',
+        color: textColor || '#000',
+        margin: '8px 0',
+      },
+      cardSubcontent: {
+        color: textColor || '#000',
+        margin: '6px 0 12px 0',
+        fontSize: 12,
+        fontStyle: 'italic',
+        lineHeight: 1,
+      },
+      links: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+      },
+      linkBlock: {
+        backgroundColor: alpha(colour.backgroundLight, 0.1),
+        borderRadius: 5,
+        fontSize: 12,
+        color: textColor || '#000',
+        padding: '4px 8px',
+        margin: 5,
+        transition: '0.3s',
+        ':hover': {
+          backgroundColor: alpha(colour.backgroundLight, 0.2),
+          cursor: 'pointer',
+        }
       },
     });
   }, [textColor]);
@@ -120,6 +176,7 @@ InfoCards.propTypes = {
     PropTypes.shape({ current: PropTypes.any })
   ]),
   title: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string,
   textColor: PropTypes.string,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
@@ -131,6 +188,11 @@ InfoCards.propTypes = {
         PropTypes.string,
         PropTypes.element,
       ]),
+      subcontent: PropTypes.string,
+      links: PropTypes.shape({
+        sourceCode: PropTypes.string,
+        website: PropTypes.string,
+      }),
     })
   ),
 };

@@ -39,7 +39,16 @@ const Timeline = (props) => {
             {e.subtitle}
           </h4>}
         {typeof(e.content) == 'string' ?
-          <p>{e.content}</p>
+          <p>
+            {e.content}
+            {e.subcontent &&
+              <><br/>
+              <span className={css(styles.subcontent)}>
+                {e.subcontent}
+              </span>
+              </>
+            }
+          </p>
           :
           e.content
         }
@@ -74,6 +83,7 @@ const Timeline = (props) => {
             }
           />}
       </VerticalTimeline>
+      <hr className={css(styles.separator)}/>
     </div>
   );
 }
@@ -85,7 +95,6 @@ const useStyle = () =>
         height: '100%',
         width: '100%',
         transition: 'ease all 1s',
-        padding: '0 0 30px 0',
       },
       header: {
         display: 'flex',
@@ -106,6 +115,11 @@ const useStyle = () =>
         color: colour.contentLight,
         fontSize: 12,
         marginTop: 0,
+      },
+      subcontent: {
+        fontSize: 12,
+        fontStyle: 'italic',
+        lineHeight: 1,
       },
       separator: {
         width: '50%',
@@ -154,9 +168,9 @@ const useTimelineStyle = () =>
     return {
       tlContent: {
         color: colour.contentLight,
-        backgroundColor: alpha(colour.backgroundLight, 0.04),
+        backgroundColor: alpha(colour.backgroundLight, 0.05),
         paddingTop: 10,
-        boxShadow: 'none',
+        boxShadow: `0 3px 3px ${alpha(colour.black, 0.1)}`,
         border: 'none',
       },
       tlIcon: {
@@ -182,7 +196,8 @@ Timeline.propTypes = {
       content: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.element,
-      ])
+      ]),
+      subContent: PropTypes.string,
     })
   ),
   initLimit: PropTypes.number,

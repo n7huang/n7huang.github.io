@@ -24,9 +24,11 @@ export const colour = {
   javaOrange: '#ed8b00',
   pythonYellow: '#ffd43b',
   javascriptYellow: '#f0db4f',
-  header: 'white',
-  white: 'white',
-  black: 'black',
+  jentlyYellow: '#fdeb4f',
+  arcadeRed: '#a33329',
+  header: '#ffffff',
+  white: '#ffffff',
+  black: '#000000',
 };
 
 export const alpha = (colour, a=0.6) => {
@@ -36,9 +38,10 @@ export const alpha = (colour, a=0.6) => {
 export const screenSize = {
   mobile: '@media only screen and (max-width: 479px)',
   mobileLandscape: '@media only screen and (min-width: 480px) and (max-width: 767px)',
-  nonMobile: '@media only screen and (min-width: 480px)',
+  nonMobile: '@media only screen and (min-width: 755px)',
   tablet: '@media only screen and (min-width: 768px) and (max-width: 991px)',
   mobileLarge: '@media only screen and (min-width: 480px) and (max-width: 991px)',
   desktop: '@media only screen and (min-width: 992px)',
   wide: '@media only screen and (min-width: 1170px)',
+  ultraWide: '@media only screen and (min-width: 1700px)',
 }
