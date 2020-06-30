@@ -39,7 +39,7 @@ const InfoCards = (props) => {
             {e.links.sourceCode &&
               <Button
                 variant={'contained'}
-                className={css(styles.linkBlock)}
+                className={css(styles.linkButton)}
                 target={'_blank'}
                 href={e.links.sourceCode}>
                   View Source Code
@@ -47,12 +47,13 @@ const InfoCards = (props) => {
             }
             {e.links.website &&
               <Button
-              variant={'contained'}
-              className={css(styles.linkBlock)}
-              target={'_blank'}
-              href={e.links.website}>
+                variant={'contained'}
+                className={css(styles.linkButton)}
+                target={'_blank'}
+                href={e.links.website}
+              >
                 Visit Website
-            </Button>
+              </Button>
             }
           </div>
         }
@@ -153,7 +154,7 @@ const useStyle = (props) => {
         flexWrap: 'wrap',
         justifyContent: 'center',
       },
-      linkBlock: {
+      linkButton: {
         backgroundColor: alpha(colour.backgroundLight, 0.1),
         borderRadius: 5,
         fontSize: 12,

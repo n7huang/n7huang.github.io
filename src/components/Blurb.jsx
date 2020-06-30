@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import { colour, screenSize, alpha } from '../util/util';
-import IconButton from '@material-ui/core/IconButton';
+import { IconButton, Button } from '@material-ui/core';
 import {
   Email, GitHub, LinkedIn
 } from '@material-ui/icons';
@@ -10,6 +10,7 @@ import {
 const MAIL_LINK = 'mailto:huang.nick9@gmail.com';
 const LINKEDIN_LINK = 'https://www.linkedin.com/in/nicholas-huang-05579b105/';
 const GITHUB_LINK = 'https://github.com/n7huang';
+const RESUME_LINK = 'https://n7huang.github.io/docs/NicholasHuang_Resume.pdf'
 
 const Blurb = (props) => {
   const {
@@ -56,6 +57,14 @@ const Blurb = (props) => {
           <span onClick={() => scrollTo(experienceRef)} className={css(styles.link)}>what I've done</span> and&nbsp;
           <span onClick={() => scrollTo(skillsRef, -120)} className={css(styles.link)}>what I can do</span> below. :)
         </p>
+        <Button
+          variant={'contained'}
+          className={css(styles.resumeButton)}
+          target={'_blank'}
+          href={RESUME_LINK}
+        >
+          Resume
+        </Button>
       </div>
     </div>
   );
@@ -124,7 +133,26 @@ const useStyle = () => {
           cursor: 'pointer',
           color: colour.complementDark,
         }
-      }
+      },
+      resumeButton: {
+        backgroundColor: alpha(colour.backgroundLight, 0.1),
+        color: colour.contentLight,
+        fontSize: 12,
+        borderRadius: 5,
+        padding: 8,
+        marginTop: 10,
+        width: '40%',
+        transition: '0.3s',
+        [screenSize.nonMobile]: {
+          fontSize: 14,
+        },
+        ':hover': {
+          backgroundColor: alpha(colour.secondary, 0.7),
+          color: colour.accent,
+          fontWeight: 'bold',
+          cursor: 'pointer',
+        }
+      },
     });
   }, []);
 };
