@@ -167,7 +167,7 @@ const useStyle = (props) => {
         }
       },
     });
-  }, [textColor]);
+  }, [backgroundColor, textColor]);
 };
 
 InfoCards.propTypes = {
