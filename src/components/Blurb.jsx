@@ -10,7 +10,7 @@ import {
 const MAIL_LINK = 'mailto:huang.nick9@gmail.com';
 const LINKEDIN_LINK = 'https://www.linkedin.com/in/nicholas-huang-05579b105/';
 const GITHUB_LINK = 'https://github.com/n7huang';
-const RESUME_LINK = 'https://n7huang.github.io/docs/NicholasHuang_Resume.pdf'
+const RESUME_LINK = 'https://n7huang.github.io/resume/';
 
 const Blurb = (props) => {
   const {
