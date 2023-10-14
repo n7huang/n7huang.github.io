@@ -105,7 +105,7 @@ const useStyle = () => {
         backgroundAttachment: 'fixed',
         backgroundImage: `url(${SkillsBackground})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'top',
+        backgroundSize: 'auto 100%',
         backgroundPosition: 'center'
       },
       skillsTint: {
