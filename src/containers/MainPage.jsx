@@ -120,12 +120,16 @@ const useStyle = () => {
 const useExperience = () =>
   useMemo(() => [
     {
-      date: 'Aug 2020 (incoming)',
+      date: 'Aug 2020 - Present',
       contentStyle: { borderTop: `3px solid ${colour.linkedinBlue}` },
       iconStyle: { background: `${colour.linkedinBlue}` },
       icon: <LinkedIn/>,
       title: 'Software Engineer',
-      subtitle: 'LinkedIn - Sunnyvale',
+      subtitle: 'LinkedIn - Sales Solutions',
+      content: `
+        Building a web application for enterprise sales users.
+        Leading feature development and other foundational initiatives.`,
+      subcontent: `Typescript, Ember.js, Sass, SQL, Presto, Spark, Java`
     },
     {
       date: 'Sep 2015 - Jun 2020',
@@ -162,7 +166,7 @@ const useExperience = () =>
         Designed and implemented hero results for a dynamic search page to connect
         users with their desired results more efficiently.
         Built and maintained RESTful APIs for a distributed search service.`,
-      subcontent: `Ember, Sass, Java+parseq`,
+      subcontent: `Ember.js, Sass, Java+parseq`,
     },
     {
       date: 'May - Aug 2018',
